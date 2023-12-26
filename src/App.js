@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import {Route, Routes} from "react-router-dom"
+import Homepage from './components/HomePage/Homepage';
+import AirdropsCalculator from './components/AirdropsCalculator/AirdropsCalculator';
+import LatestUpdates from './components/LatestUpdates/LatestUpdates';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div><Header/></div>
+    <Routes>
+      <Route path='/' element={<Homepage/>}/>
+      <Route path='/airdrops' element={<AirdropsCalculator/>}/>
+      <Route path='/updates' element={<LatestUpdates/>}/>
+    </Routes>
+    <Footer/>
     </div>
   );
 }
