@@ -1,9 +1,9 @@
-
+import "./LatestUpdates.css"
 
 function LatestUpdates(){
 
     return(
-        <div></div>
+        <div className="bigger">🛠️ IN CONSTRUCTION...🛠️</div>
     )
 }
 

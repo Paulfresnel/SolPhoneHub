@@ -12,11 +12,13 @@ function Homepage(){
             <div className='hp-center'>
                     <div className="flex-r">
                         <div><Box boxSize='sm'><Image borderRadius={"30px"} src="./downloadedImage.png"/></Box></div>
+                        <div>
                     <p>This unnoficial site serves as a base to centralize the information and news going on about the Solana Saga Mobile Phones in a way
                     help the community in an open-source way.
                 <br/>
                 Feel free to contact me if you'd like to contribute to the development of this site 
                 </p>
+                </div>
                 
                 </div>
                 
