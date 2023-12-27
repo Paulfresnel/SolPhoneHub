@@ -98,7 +98,7 @@ function AirdropsCalculator(){
             </Box>
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
                 return (
-                    <div className="flex-row">
+                    <div key={token.data.symbol} className="flex-row">
                     <img className="small-logo" src={token.data.image.thumb}/>
                     <p>{token.data.symbol.toUpperCase()}</p>
                     <p>$ {token.data.market_data.current_price.usd}</p>
