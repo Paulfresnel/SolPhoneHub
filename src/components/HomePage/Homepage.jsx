@@ -8,12 +8,12 @@ function Homepage(){
     
     return(
         <div>
-        <h1 className='main-title'>The unofficial Solana phone Site to stay updated on the latest drops </h1>
+        <h1 className='main-title'>The unofficial Solana Phone Hub to stay updated on the latest drops and news  </h1>
             <div className='hp-center'>
                     <div className="flex-r">
                         <div><Box boxSize='sm'><Image borderRadius={"30px"} src="./downloadedImage.png"/></Box></div>
                         <div>
-                    <p>This unnoficial site serves as a base to centralize the information and news going on about the Solana Saga Mobile Phones in a way
+                    <p className='paragraph'>This unnoficial site serves as a base to centralize the information and news going on about the Solana Saga Mobile Phones in a way
                     help the community in an open-source way.
                 <br/>
                 Feel free to contact me if you'd like to contribute to the development of this site 
@@ -32,7 +32,7 @@ function Homepage(){
                     <Text>Stay up-to-date with the latest news and updates happening on the space for the Solana Saga Phone</Text>
                 </CardBody>
                 <CardFooter>
-                    <Link to="/updates"><Button>Check</Button></Link>
+                    <Link to="/updates"><Button className='button-check'>Check</Button></Link>
                 </CardFooter>
             </Card>
             <Card align="center"  className='card'>
@@ -43,7 +43,7 @@ function Homepage(){
                     <Text>Estimate the value of the Airdrops associated with the ownership of a Solana Saga phone</Text>
                 </CardBody>
                 <CardFooter>
-                    <Link to="/airdrops"><Button>Check</Button></Link>
+                    <Link to="/airdrops"><Button className='button-check'>Check</Button></Link>
                 </CardFooter>
             </Card>
             <Card align="center"  className='card'>
@@ -54,7 +54,7 @@ function Homepage(){
                     <Text>Make sure to follow the official Links from the Solana Mobile Team</Text>
                 </CardBody>
                 <CardFooter>
-                    <a target='_blank' href="https://twitter.com/solanamobile"><Button>Check</Button></a>
+                    <a target='_blank' rel="noreferrer" href="https://twitter.com/solanamobile"><Button className='button-check'>Check</Button></a>
                 </CardFooter>
             </Card>
             </div>

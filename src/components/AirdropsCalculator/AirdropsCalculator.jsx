@@ -55,14 +55,14 @@ function AirdropsCalculator(){
     return(
         <div>
             <h1>SOLANA PHONE AIRDROP ESTIMATOOR TOOL</h1>
-            <p>Play around with this Cost & Profit estimatoor 🤑 to estimate your current <strong>PnL</strong> on your Solana Phone 🤪
+            <p className="paragraph">Play around with this Cost & Profit estimatoor 🤑 to estimate your <strong>current PnL</strong> on your Solana Phone 🤪
             <br/>
             Don't forget there's still many more news incoming... 👀</p>
-            <Button className="button-margin-t" onClick={(e)=> fetchPrices(e)}>Fetch calculations...</Button>
+            <Button className="button-margin-t button-check" onClick={(e)=> fetchPrices(e)}>Fetch calculations...</Button>
             {!isLoading ? <div>{(bonkValue && acsValue) && <div>
                 <Box position='relative' padding='10'>
                 <Divider />
-                    <AbsoluteCenter fontWeight={"bold"} bg='white' px='4'>
+                    <AbsoluteCenter  fontWeight={"bold"} color={"rgba(145,6,196,1)"} bg='white' px='4'>
                         Current Airdrop Estimatoor
                     </AbsoluteCenter>
             </Box>
@@ -73,8 +73,9 @@ function AirdropsCalculator(){
                 {multiplePhonesDisplay && 
                 <label>How many ?<input type="number" className="reduced" onChange={(e)=>setNumOfPhones(e.target.value)} ></input></label>}
                 <Divider className="margin-top"/>
-                <label>Cost of your Phone(s): $ <input onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
-                <p>Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
+                <label>Cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
+                {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue) > 0 ? <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
+                : <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
                     </div>
 
             </div>} </div>: 
@@ -90,12 +91,12 @@ function AirdropsCalculator(){
   wrapperClass=""
   /></div>}
             {!isLoading ? <div>
-            <Box position='relative' padding='10'>
+            {tokensData.length>0 && <Box position='relative' padding='10'>
               <Divider />
-              <AbsoluteCenter fontWeight={"bold"} bg='white' px='4'>
+              <AbsoluteCenter color={"rgba(145,6,196,1)"} fontWeight={"bold"} bg='white' px='4'>
               Airdropped Tokens current Price
               </AbsoluteCenter>
-            </Box>
+            </Box>}
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
                 return (
                     <div key={token.data.symbol} className="flex-row">
