@@ -1,3 +1,4 @@
+<img src="./public//Screenshot 2023-12-30 at 17.01.56.png"/>
 <h1>SolPhoneHub: For all your Solana Saga Needs</h1>
 
 Open-sourcing and centralizing all the information on the Solana Saga mobile phone updates to keep the community updated on the latest announcements and news ongoing with the Saga ownership.
