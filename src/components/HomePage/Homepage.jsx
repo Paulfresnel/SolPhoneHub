@@ -11,7 +11,7 @@ function Homepage(){
         <h1 className='main-title'>The unofficial Solana Phone Hub to stay updated on the latest drops and news  </h1>
             <div className='hp-center'>
                     <div className="flex-r">
-                        <div><Box boxSize='sm'><Image borderRadius={"30px"} src="./downloadedImage.png"/></Box></div>
+                        <div ><Box className='smol-img' boxSize='sm'><Image borderRadius={"30px"} src="./downloadedImage.png"/></Box></div>
                         <div>
                     <p className='paragraph'>This unnoficial site serves as a base to centralize the information and news going on about the Solana Saga Mobile Phones in a way
                     help the community in an open-source way.
