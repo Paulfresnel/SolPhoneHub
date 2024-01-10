@@ -11,7 +11,11 @@ function AirdropsCalculator(){
 
     const [tokensData, setTokensData] = useState([]);
     const [bonkValue, setBonkValue] = useState();
+    const [bonkAirdropValue, setBonkAirdropValue] = useState(0);
+    const [acsAirdropValue, setAcsAirdropValue] = useState(0);
+    const [samoAirdropValue, setSamoAirdropValue] = useState(0);
     const [acsValue, setAcsValue] = useState();
+    const [samoValue, setSamoValue] = useState();
     const [numOfPhones, setNumOfPhones] = useState(1);
     const [multiplePhonesDisplay, setMultiplePhonesDisplay] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -28,18 +32,19 @@ function AirdropsCalculator(){
         setTokensData([]);
         setBonkValue(0);
         setAcsValue(0);
+        setSamoValue(0);
         let AccessProtocolData = await Axios.get('https://api.coingecko.com/api/v3/coins/access-protocol');
         let BonkData = await Axios.get('https://api.coingecko.com/api/v3/coins/bonk');
-        let tokensDataa = [AccessProtocolData, BonkData];
-        setBonkValue(BonkData.data.market_data.current_price.usd);
-        setAcsValue(AccessProtocolData.data.market_data.current_price.usd);
-        console.log(tokensDataa);
-        await setTokensData(tokensDataa);
-        console.log("what");
-        console.log(tokensData);
+        let samoData = await Axios.get('https://api.coingecko.com/api/v3/coins/samoyedcoin');
+        let tokensDataArray = [AccessProtocolData, BonkData, samoData];
+        await setBonkValue(BonkData.data.market_data.current_price.usd);
+        await setAcsValue(AccessProtocolData.data.market_data.current_price.usd);
+        await setSamoValue(samoData.data.market_data.current_price.usd);
+        await setTokensData(tokensDataArray);
         setTimeout(()=>{
             setIsLoading(false)
         }, 1000)
+        
     }
     }
 
@@ -68,14 +73,15 @@ function AirdropsCalculator(){
             </Box>
                 <p className="bolder"><strong><em>Bonk</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
                 <p className="bolder"><strong><em>ACS</em></strong>: $ {(acsValue*100000*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>Samo</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
                 <div className="flex-collumn">
                 <p className="highlighted" onClick={(e)=>setPhonesState(!multiplePhonesDisplay)}>Have multiple phones?</p>
                 {multiplePhonesDisplay && 
                 <label>How many ?<input type="number" className="reduced" onChange={(e)=>setNumOfPhones(e.target.value)} ></input></label>}
                 <Divider className="margin-top"/>
-                <label>Cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
-                {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue) > 0 ? <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
-                : <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
+                <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
+                {(bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones) - phoneCostValue > 0 ? <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)- phoneCostValue).toFixed(2)}</p>
+                : <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
                     </div>
 
             </div>} </div>: 
@@ -101,12 +107,11 @@ function AirdropsCalculator(){
                 return (
                     <div key={token.data.symbol} className="flex-row">
                     <img className="small-logo" src={token.data.image.thumb}/>
-                    <p>{token.data.symbol.toUpperCase()}</p>
                     <p>$ {token.data.market_data.current_price.usd}</p>
                     {token.data.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 
-                        <Badge colorScheme="green">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
+                        <Badge className="badge-m" colorScheme="green">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
                     :
-                     <Badge colorScheme="red">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>}
+                     <Badge className="badge-m" colorScheme="red">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>}
                     </div>
                 )
             })}

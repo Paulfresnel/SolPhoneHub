@@ -4,7 +4,10 @@
       flex-direction: column;
       justify-content: space-between !important;
       align-items: center;
-      height: 75px;
+      height: 15vh;
+    }
+    .badge-m{
+        margin-left: 2vw;
     }
 }
 
