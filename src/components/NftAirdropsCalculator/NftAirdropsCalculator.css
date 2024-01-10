@@ -1,0 +1,13 @@
+.nfts-alligned{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.main-card{
+    margin: 15px;
+    border: 2px black solid !important;
+    background: linear-gradient(90deg, rgba(221, 31, 255, 0.586) 0%, rgba(153, 21, 201, 0.478) 35%, rgba(78, 38, 240, 0.577) 53%, rgba(174, 174, 174, 0.569) 74%, rgba(3,225,255,1) 100%);
+}
+

@@ -11,6 +11,32 @@
     }
 }
 
+.link-social{
+    color: blue;
+    text-decoration: underline;
+}
+
+.center-buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+
+
+.center-buttons button {
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgb(13, 127, 221); 
+    color: aliceblue;
+    background: linear-gradient(90deg, rgba(220,31,255,1) 0%, rgba(154,21,201,1) 35%, rgba(80,38,240,1) 53%, rgba(27,115,223,1) 74%, rgba(3,225,255,1) 100%)
+}
+
+.center-buttons button:hover{
+    background: #9a15c9;
+}
+
 .green{
     color: green !important;
     font-weight: bold;
@@ -93,6 +119,10 @@
     margin-top: 15px;
 }
 
+.latest-updates{
+    font-size: 12px;
+}
+
 h1{
     margin: 20px;
     font-size: 34px;
@@ -104,8 +134,12 @@ h1{
   -webkit-text-fill-color: transparent;
 }
 
+.badge-m{
+    margin-left: 5px;
+}
+
 .button-margin-t{
     margin-top: 20px;
     border: 1px solid #03E1FF ;
-    color: #DC1FFF;
+    color: #3717ec;
 }
