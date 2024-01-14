@@ -9,7 +9,6 @@ router.get("/", (req, res, next) => {
 router.get('/nft', async (req, res, next) => {
   console.log('Fetching NFTs...');
   const response = await axios.get('https://api-mainnet.magiceden.dev/v2/collections');
-  console.log("nft listing fetched:", response.data[0]);
   res.json({nft: response.data});
 })
 
