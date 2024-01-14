@@ -10,24 +10,14 @@ require("./db");
 const express = require("express");
 const cors = require('cors');
 
-const allowedOrigins = ['https://sol-phone-hub.vercel.app', 'http://localhost:3000']; // Add more origins if needed
-
-
-
 const app = express();
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   }));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://sol-phone-hub.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+
 
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
