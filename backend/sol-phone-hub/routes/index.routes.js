@@ -13,4 +13,11 @@ router.get('/nft', async (req, res, next) => {
   res.json({nft: response.data});
 })
 
+router.get("/nft/:nftSymbol", async (req, res) => {
+  const { nftSymbol } = req.params;
+  console.log("nft symbol:", nftSymbol);
+  const response = await axios.get(`https://api-mainnet.magiceden.dev/v2/collections/${nftSymbol}/stats`);
+  res.json({nftData: response.data});
+})
+
 module.exports = router;
