@@ -2,3 +2,15 @@
     text-decoration:underline;
     color: blue;
 }
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border-r{
+    border: 1px rgba(0, 0, 255, 0.429) solid ;
+    border-radius: 25px;
+    margin-left: 10px;
+}

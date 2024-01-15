@@ -14,13 +14,16 @@ function AirdropsCalculator(){
     const [bonkValue, setBonkValue] = useState();
     const [acsValue, setAcsValue] = useState();
     const [samoValue, setSamoValue] = useState();
-    const [solValue, setSolValue] = useState(0);
+    const [bozoValue, setBozoValue] = useState();
+    const [solValue, setSolValue] = useState();
     const [numOfPhones, setNumOfPhones] = useState(1);
     const [multiplePhonesDisplay, setMultiplePhonesDisplay] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [phoneCostValue, setPhoneCostValue] = useState(700);
     const [totalNftsValue, setTotalNftsValue] = useState(0);
     const [nftStateVisibility, setNftStateVisibility] = useState(false);
+
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 
     let fetchPrices = async () =>{
@@ -34,15 +37,18 @@ function AirdropsCalculator(){
         setAcsValue(0);
         setSamoValue(0);
         setSolValue(0);
-        let AccessProtocolData = await Axios.get('https://api.coingecko.com/api/v3/coins/access-protocol');
-        let BonkData = await Axios.get('https://api.coingecko.com/api/v3/coins/bonk');
-        let solData = await Axios.get('https://api.coingecko.com/api/v3/coins/solana');
-        let samoData = await Axios.get('https://api.coingecko.com/api/v3/coins/samoyedcoin');
-        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData];
-        await setBonkValue(BonkData.data.market_data.current_price.usd);
-        await setSolValue(solData.data.market_data.current_price.usd);
-        await setAcsValue(AccessProtocolData.data.market_data.current_price.usd);
-        await setSamoValue(samoData.data.market_data.current_price.usd);
+        let AccessProtocolData = await Axios.get(`${serverUrl}/api/tokens/access-protocol`);
+        let BonkData = await Axios.get(`${serverUrl}/api/tokens/bonk`);
+        let solData = await Axios.get(`${serverUrl}/api/tokens/solana`);
+        let samoData = await Axios.get(`${serverUrl}/api/tokens/samoyedcoin`);
+        let bozoData = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
+        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData];
+        console.log("bozo data:", bozoData)
+        await setBonkValue(BonkData.data.tokenData.market_data.current_price.usd);
+        await setSolValue(solData.data.tokenData.market_data.current_price.usd);
+        await setAcsValue(AccessProtocolData.data.tokenData.market_data.current_price.usd);
+        await setSamoValue(samoData.data.tokenData.market_data.current_price.usd);
+        await setBozoValue(bozoData.data.tokenData.market_data.current_price.usd);
         await setTokensData(tokensDataArray);
         setTimeout(()=>{
             setIsLoading(false)
@@ -95,6 +101,8 @@ function AirdropsCalculator(){
                 <p className="bolder"><strong><em>Bonk</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
                 <p className="bolder"><strong><em>ACS</em></strong>: $ {(acsValue*100000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>Samo</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>Bozo</em></strong>: $ {(bozoValue*300000000*numOfPhones).toFixed(2)}</p>
+
                 {totalNftsValue > 0 && <p className="bolder"><strong><em>NFTs</em></strong>: $ {(totalNftsValue*solValue*numOfPhones).toFixed(2)}</p>}
                 <div className="center-buttons">
                 
@@ -112,8 +120,8 @@ function AirdropsCalculator(){
                 <label>How many ?<input type="number" className="reduced" onChange={(e)=>setNumOfPhones(e.target.value)} ></input></label>}
                 <Divider className="margin-top"/>
                 <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
-                {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones) - phoneCostValue) > 0 ? <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones) - phoneCostValue).toFixed(2)}</p>
-                : <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
+                {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones) - phoneCostValue) > 0 ? <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
+                : <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
                     </div>
 
             </div>} </div>: 
@@ -139,7 +147,7 @@ function AirdropsCalculator(){
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
                 return (
                     <div key={token.data.symbol} className="flex-row">
-                    <img className="small-logo" src={token.data.image.thumb}/>
+                    <img alt={token.data.symbol} className="small-logo" src={token.data.image.thumb}/>
                     <p>$ {token.data.market_data.current_price.usd}</p>
                     {token.data.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 
                         <Badge className="badge-m" colorScheme="green">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
