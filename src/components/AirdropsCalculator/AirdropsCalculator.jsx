@@ -38,21 +38,28 @@ function AirdropsCalculator(){
         setAcsValue(0);
         setSamoValue(0);
         setSolValue(0);
-        let AccessProtocolData = await Axios.get(`${serverUrl}/api/tokens/access-protocol`);
-        let BonkData = await Axios.get(`${serverUrl}/api/tokens/bonk`);
-        let solData = await Axios.get(`${serverUrl}/api/tokens/solana`);
-        let samoData = await Axios.get(`${serverUrl}/api/tokens/samoyedcoin`);
-        let bozoData = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
-        let lfgData = await Axios.get(`${serverUrl}/api/tokens/lessfngas`);
-        let tokensDataArray = [AccessProtocolData.data.tokenData, BonkData.data.tokenData, samoData.data.tokenData, 
-            solData.data.tokenData, bozoData.data.tokenData, lfgData.data.tokenData];
-        console.log("bozo data:", bozoData)
-        await setBonkValue(BonkData.data.tokenData.market_data.current_price.usd);
-        await setSolValue(solData.data.tokenData.market_data.current_price.usd);
-        await setAcsValue(AccessProtocolData.data.tokenData.market_data.current_price.usd);
-        await setSamoValue(samoData.data.tokenData.market_data.current_price.usd);
-        await setBozoValue(bozoData.data.tokenData.market_data.current_price.usd);
-        await setLfgValue(lfgData.data.tokenData.market_data.current_price.usd);
+        let accessProtocolResponse = await Axios.get(`${serverUrl}/api/tokens/access-protocol`);
+        let bonkResponse = await Axios.get(`${serverUrl}/api/tokens/bonk`);
+        let solResponse = await Axios.get(`${serverUrl}/api/tokens/solana`);
+        let samoResponse = await Axios.get(`${serverUrl}/api/tokens/samoyedcoin`);
+        let bozoResponse = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
+        let lfgResponse = await Axios.get(`${serverUrl}/api/tokens/lessfngas`);
+
+        let AccessProtocolData = accessProtocolResponse.data.tokenData;
+        let BonkData = bonkResponse.data.tokenData;
+        let solData = solResponse.data.tokenData;
+        let samoData = samoResponse.data.tokenData;
+        let bozoData = bozoResponse.data.tokenData;
+        let lfgData = lfgResponse.data.tokenData;
+
+        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData, lfgData];
+        console.log("bozo data:", bozoData);
+        await setBonkValue(BonkData.market_data.current_price.usd);
+        await setSolValue(solData.market_data.current_price.usd);
+        await setAcsValue(AccessProtocolData.market_data.current_price.usd);
+        await setSamoValue(samoData.market_data.current_price.usd);
+        await setBozoValue(bozoData.market_data.current_price.usd);
+        await setLfgValue(lfgData.market_data.current_price.usd);
         await setTokensData(tokensDataArray);
         setTimeout(()=>{
             setIsLoading(false)
@@ -80,10 +87,6 @@ function AirdropsCalculator(){
         setTotalNftsValue(lampToSolValue);
     } 
     
-
-    useEffect(()=>{
-        
-    }, [])
 
     return(
         <div>
@@ -157,9 +160,10 @@ function AirdropsCalculator(){
               </AbsoluteCenter>
             </Box>}
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
+                console.log("displaying data:", token)
                 return (
                     <div key={token.data.symbol} className="flex-row">
-                    <img alt={token.data.symbol} className="small-logo" src={token.data.image.thumb}/>
+                   <img alt={token.data.symbol} className="small-logo" src={token.data.image?.thumb}/>
                     <p>$ {token.data.market_data.current_price.usd}</p>
                     {token.data.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 
                         <Badge className="badge-m" colorScheme="green">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
