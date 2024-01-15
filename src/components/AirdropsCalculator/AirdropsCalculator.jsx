@@ -162,13 +162,13 @@ function AirdropsCalculator(){
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
                 console.log("displaying data:", token)
                 return (
-                    <div key={token.data.symbol} className="flex-row">
-                   <img alt={token.data.symbol} className="small-logo" src={token.data.image?.thumb}/>
-                    <p>$ {token.data.market_data.current_price.usd}</p>
-                    {token.data.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 
-                        <Badge className="badge-m" colorScheme="green">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
+                    <div key={token.symbol} className="flex-row">
+                   <img alt={token.symbol} className="small-logo" src={token.image?.thumb}/>
+                    <p>$ {token.market_data.current_price.usd}</p>
+                    {token.market_data.price_change_percentage_1h_in_currency.usd > 0 ? 
+                        <Badge className="badge-m" colorScheme="green">{token.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>
                     :
-                     <Badge className="badge-m" colorScheme="red">{token.data.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>}
+                     <Badge className="badge-m" colorScheme="red">{token.market_data.price_change_percentage_1h_in_currency.usd} %</Badge>}
                     </div>
                 )
             })}
