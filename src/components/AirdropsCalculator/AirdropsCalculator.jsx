@@ -184,15 +184,16 @@ function AirdropsCalculator(){
   wrapperStyle={{}}
   wrapperClass=""
   /></div>}
+  
   <Box position='relative' padding='10'>
   <Divider/>
               <AbsoluteCenter color={"rgba(145,6,196,1)"} fontWeight={"bold"} bg='white' px='4'>
-              Latest updates (10/01):
+              Latest updates (15/01):
               </AbsoluteCenter>
               </Box>
             <ul className="latest-updates">
-                <li>📱 <strong>Added Airdropped NFT collections and market data</strong> for Saga Monkes, SagaSharkyClub & Saga Punks </li>
-                <li>📱 Added Links to the social accounts of the airdropped NFT collections (API powered by <a className="link-social" href="https://docs.magiceden.io/reference/get_collections">MagicEden</a>)</li>
+                <li>📱 <strong>Added Airdropped NFT collections and market data</strong> for some Saga mints </li>
+                <li>📱 Backend server built to handle API requests (API powered by <a className="link-social" href="https://docs.magiceden.io/reference/get_collections">MagicEden</a> & Coingecko)</li>
             </ul>
         </div>
     )
