@@ -121,8 +121,8 @@ function AirdropsCalculator(){
             <p className="paragraph">Play around with this Cost & Profit estimatoor 🤑 to estimate your <strong>current PnL</strong> on your Solana Phone 🤪
             <br/>
             Don't forget there's still many more news incoming... 👀</p>
-            <p className="margined-sides">Launch the calculations and have fun trying out the app
-            <br/>  with different inputs (<strong>number of phones</strong> & <strong>total cost of phones</strong>)</p>
+            <p className="smol-margin">Launch the calculations and have fun trying out the app
+            with different inputs (<strong>number of phones</strong> & <strong>total cost of phones</strong>)</p>
 
             <Button className="button-margin-t button-check" onClick={(e)=> fetchPrices(e)}>Fetch calculations...</Button>
             {setFetchErrMsg.length>0 && <p color="red">{fetchErrMsg}</p>}

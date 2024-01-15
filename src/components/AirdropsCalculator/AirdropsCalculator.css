@@ -72,6 +72,10 @@
     align-items: center;
 }
 
+.smol-margin{
+    margin: 5px 5vw 5px 5vw;
+}
+
 .small-logo{
     margin: 0px 10px 0px 15px;
 }
