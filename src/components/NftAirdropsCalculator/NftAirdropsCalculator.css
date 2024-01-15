@@ -11,3 +11,7 @@
     background: linear-gradient(90deg, rgba(221, 31, 255, 0.586) 0%, rgba(153, 21, 201, 0.478) 35%, rgba(78, 38, 240, 0.577) 53%, rgba(174, 174, 174, 0.569) 74%, rgba(3,225,255,1) 100%);
 }
 
+.info-text{
+    font-size: 1.2rem;
+    margin: 25px 15vw 25px 15vw;
+}

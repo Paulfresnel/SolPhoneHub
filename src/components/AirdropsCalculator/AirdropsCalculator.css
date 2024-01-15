@@ -1,16 +1,19 @@
 @media (max-width: 480px) {
     .centered-airdrop{
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
-      justify-content: space-between !important;
       align-items: center;
-      height: 15vh;
     }
     .badge-m{
         margin-left: 2vw;
     }
 }
-
+.margined-sides{
+    margin: 5vw 5vw 5vw 5vw;
+    display: flex;
+    justify-content: center;
+}
 .link-social{
     color: blue;
     text-decoration: underline;
@@ -57,12 +60,14 @@
 .flex-row{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space;
     align-items: center;
+    margin: 10px;
 }
 
 .centered-airdrop{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }

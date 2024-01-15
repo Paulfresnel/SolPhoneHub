@@ -9,6 +9,8 @@ import NftAirdropsCalculator from "../NftAirdropsCalculator/NftAirdropsCalculato
 
 function AirdropsCalculator(){
 
+    // Defining State Variables
+
     const [tokensData, setTokensData] = useState([]);
     const [airdroppedNftsData, setAirdroppedNftsData] = useState([]);
     const [bonkValue, setBonkValue] = useState();
@@ -23,15 +25,22 @@ function AirdropsCalculator(){
     const [phoneCostValue, setPhoneCostValue] = useState(700);
     const [totalNftsValue, setTotalNftsValue] = useState(0);
     const [nftStateVisibility, setNftStateVisibility] = useState(false);
+    const [fetchCounter, setFetchCounter] = useState(0);
+    const [fetchErrMsg, setFetchErrMsg] = useState("");
+
+    //Defining serverUrl from env variables
 
     const serverUrl = process.env.REACT_APP_SERVER_URL;
 
+    // Fetching Token Data individually & storing it in state variables - 5 separate API Calls
 
     let fetchPrices = async () =>{
         if (bonkValue>0 && acsValue>0 && tokensData.length>0){
             alert("Prices already fetched, please wait before re-fetching the prices")   
         }
         else{
+            if (fetchCounter===0){
+                try{
         setIsLoading(true);
         setTokensData([]);
         setBonkValue(0);
@@ -61,21 +70,39 @@ function AirdropsCalculator(){
         await setBozoValue(bozoData.market_data.current_price.usd);
         await setLfgValue(lfgData.market_data.current_price.usd);
         await setTokensData(tokensDataArray);
+        setFetchCounter(1);
         setTimeout(()=>{
             setIsLoading(false)
         }, 1000)
-        
+    } catch(err){
+        console.log("error happened in consoled:",err);
+        setFetchErrMsg("There was an error due to the rate limit of coingecko's public API, please wait and try again later!");
+        setIsLoading(false);
+        setTimeout(()=>{
+            setFetchErrMsg('');
+
+        }, 4000);
+
     }
     }
+    }
+    }
+
+    // Show & Hide NFTs Panel
 
     const switchNftStateVisibility = (e) =>{
         e.preventDefault();
         setNftStateVisibility(!nftStateVisibility);
     }
 
+    // Show & Hide Multiple Phone Input
+
     let setPhonesState = (e) =>{
         setMultiplePhonesDisplay(!multiplePhonesDisplay)
      }
+
+
+     // Calculate total value of NFTs from floor price & store it in state variable
 
      const calculateNftsTotalValueLive =  (e) => {
         e.preventDefault();
@@ -94,10 +121,11 @@ function AirdropsCalculator(){
             <p className="paragraph">Play around with this Cost & Profit estimatoor 🤑 to estimate your <strong>current PnL</strong> on your Solana Phone 🤪
             <br/>
             Don't forget there's still many more news incoming... 👀</p>
-            <p>Launch the calculations and have fun trying out the app
+            <p className="margined-sides">Launch the calculations and have fun trying out the app
             <br/>  with different inputs (<strong>number of phones</strong> & <strong>total cost of phones</strong>)</p>
 
             <Button className="button-margin-t button-check" onClick={(e)=> fetchPrices(e)}>Fetch calculations...</Button>
+            {setFetchErrMsg.length>0 && <p color="red">{fetchErrMsg}</p>}
             {!isLoading ? <div>{(bonkValue && acsValue) && <div>
                 <Box position='relative' padding='10'>
                 <Divider />
@@ -127,7 +155,10 @@ function AirdropsCalculator(){
                 <p className="highlighted" onClick={(e)=>setPhonesState(!multiplePhonesDisplay)}>Have multiple phones?</p>
                 {multiplePhonesDisplay && 
                 <label>How many ?<input type="number" className="reduced" onChange={(e)=>setNumOfPhones(e.target.value)} ></input></label>}
-                <Divider className="margin-top"/>
+                <Divider className="margin-top"/>    
+                <br/>          
+                <p>Total Value of Rewards: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)).toFixed(2)}</p>
                 <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
                 {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+
                 (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones) - phoneCostValue) > 0 ? 
@@ -193,7 +224,7 @@ function AirdropsCalculator(){
               </Box>
             <ul className="latest-updates">
                 <li>📱 <strong>Added Airdropped NFT collections and market data</strong> for some Saga mints </li>
-                <li>📱 Backend server built to handle API requests (API powered by <a className="link-social" href="https://docs.magiceden.io/reference/get_collections">MagicEden</a> & Coingecko)</li>
+                <li>📱 Backend server built to handle API requests (API powered by <a className="link-social" href="https://docs.magiceden.io/reference/get_collections">MagicEden</a> & <a href="https://www.coingecko.com/" target="_blank">Coingecko</a>)</li>
             </ul>
         </div>
     )

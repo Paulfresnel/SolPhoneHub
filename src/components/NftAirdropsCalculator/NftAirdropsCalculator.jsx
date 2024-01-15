@@ -26,7 +26,8 @@ function NftAirdropsCalculator(props){
                 if (x.symbol === "sagapunks" || x.symbol === "sagamonkes" || x.symbol === "saga_dawgs" ||
                  x.symbol === "saga_rpg"  || x.symbol === "sagasharkyclub" || x.symbol === "slimesofsaga"
                  || x.symbol === "saga_aliens" || x.symbol === "saga_cats" || x.symbol === "sentients" 
-                 || x.symbol === "sagagoatclub"  ){
+                 || x.symbol === "sagagoatclub" || x.symbol === "saga_aliens" || x.symbol === "porkmarket_2_9"
+                 || x.symbol === "baby_lonfo" || x.symbol === "belzebu"  ){
                     return x;
                 }
             })
@@ -53,7 +54,8 @@ function NftAirdropsCalculator(props){
     
 
     return(
-        <div>
+        <div > <Text className="info-text">Here below you can find a list of different NFT projects that either airdroped to Saga Genesis holders or allowed free WL/Mint, 
+        this list is not exhaustive and is subject to constant additions for the Saga Fam... 🙊</Text>
 
         {(!isLoading && airdroppedNftsData.length>0) ? 
             <div className="nfts-alligned">{airdroppedNftsData.map((nft)=>{
@@ -71,9 +73,9 @@ function NftAirdropsCalculator(props){
                         <Divider/>
                         <CardFooter >
                             <ButtonGroup spacing={"50"} >
-                                <a rel="noreferrer" target="_blank" href={nft.twitter}><i className="fa-brands fa-twitter"></i></a>
-                                <a rel="noreferrer" target="_blank" href={nft.discord}><i className="fa-brands fa-discord"></i></a>
-                                <a rel="noreferrer" target="_blank" href={nft.website}><i className="fa-solid fa-globe"></i></a>
+                                {nft.twitter && <a rel="noreferrer" target="_blank" href={nft.twitter}><i className="fa-brands fa-twitter"></i></a>}
+                                {nft.discord && <a rel="noreferrer" target="_blank" href={nft.discord}><i className="fa-brands fa-discord"></i></a>}
+                                {nft.website && <a rel="noreferrer" target="_blank" href={nft.website}><i className="fa-solid fa-globe"></i></a>}
                             </ButtonGroup>
                         </CardFooter>
                     </Card>
