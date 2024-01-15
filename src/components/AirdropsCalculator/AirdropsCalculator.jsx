@@ -42,7 +42,8 @@ function AirdropsCalculator(){
         let solData = await Axios.get(`${serverUrl}/api/tokens/solana`);
         let samoData = await Axios.get(`${serverUrl}/api/tokens/samoyedcoin`);
         let bozoData = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
-        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData];
+        let tokensDataArray = [AccessProtocolData.data.tokenData, BonkData.data.tokenData, samoData.data.tokenData, 
+            solData.data.tokenData, bozoData.data.tokenData];
         console.log("bozo data:", bozoData)
         await setBonkValue(BonkData.data.tokenData.market_data.current_price.usd);
         await setSolValue(solData.data.tokenData.market_data.current_price.usd);
