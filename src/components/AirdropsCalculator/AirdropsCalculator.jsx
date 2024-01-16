@@ -62,7 +62,6 @@ function AirdropsCalculator(){
         let lfgData = lfgResponse.data.tokenData;
 
         let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData, lfgData];
-        console.log("bozo data:", bozoData);
         await setBonkValue(BonkData.market_data.current_price.usd);
         await setSolValue(solData.market_data.current_price.usd);
         await setAcsValue(AccessProtocolData.market_data.current_price.usd);
@@ -81,7 +80,7 @@ function AirdropsCalculator(){
         setTimeout(()=>{
             setFetchErrMsg('');
 
-        }, 4000);
+        }, 4500);
 
     }
     }
@@ -171,7 +170,7 @@ function AirdropsCalculator(){
                     </div>
 
             </div>} </div>: 
-            <div className="centered"><MutatingDots
+            <div className="centered-loading"><strong>L.O.A.D.I.N.G...</strong><MutatingDots
   visible={true}
   height="100"
   width="100"
@@ -183,7 +182,7 @@ function AirdropsCalculator(){
   wrapperClass=""
   /></div>}
   {(!isLoading && tokensData.length>0) && <div>{nftStateVisibility && <NftAirdropsCalculator airdroppedNftsData={airdroppedNftsData} setAirdroppedNftsData={setAirdroppedNftsData} totalNftsValue={totalNftsValue} setTotalNftsValue={setTotalNftsValue} solValue={solValue}/>}</div>}
-            {!isLoading ? <div>
+            {!isLoading && <div>
             {tokensData.length>0 && <Box position='relative' padding='10'>
               <Divider />
               <AbsoluteCenter color={"rgba(145,6,196,1)"} fontWeight={"bold"} bg='white' px='4'>
@@ -191,7 +190,6 @@ function AirdropsCalculator(){
               </AbsoluteCenter>
             </Box>}
             {tokensData.length>0 && <div className="centered-airdrop">{tokensData.map((token) => {
-                console.log("displaying data:", token)
                 return (
                     <div key={token.symbol} className="flex-row">
                    <img alt={token.symbol} className="small-logo" src={token.image?.thumb}/>
@@ -204,17 +202,7 @@ function AirdropsCalculator(){
                 )
             })}
             </div>}
-        </div> : <div className="centered"><MutatingDots
-  visible={true}
-  height="100"
-  width="100"
-  color="#03E1FF"
-  secondaryColor="#DC1FFF"
-  radius="12.5"
-  ariaLabel="mutating-dots-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  /></div>}
+        </div>}
   
   <Box position='relative' padding='10'>
   <Divider/>

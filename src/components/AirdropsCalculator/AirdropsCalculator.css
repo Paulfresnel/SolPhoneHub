@@ -99,6 +99,13 @@
     cursor: pointer;
 }
 
+.centered-loading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .reduced{
     width: 20%;
     margin: 0 auto;
