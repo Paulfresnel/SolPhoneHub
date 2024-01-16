@@ -24,17 +24,7 @@ function Homepage(){
                 
             </div>        
             <div className="organized-cards">
-            <Card align="center" className='card'>
-                <CardHeader>
-                    <Heading className='solana-text'>Stay Updated</Heading>
-                </CardHeader>
-                <CardBody>
-                    <Text>Stay up-to-date with the latest news and updates happening on the space for the Solana Saga Phone</Text>
-                </CardBody>
-                <CardFooter>
-                    <Link to="/updates"><Button className='button-check'>Check</Button></Link>
-                </CardFooter>
-            </Card>
+            
             <Card align="center"  className='card'>
                 <CardHeader>
                     <Heading className='solana-text'>Airdrops Value Estimatoor</Heading>
@@ -46,6 +36,19 @@ function Homepage(){
                     <Link to="/airdrops"><Button className='button-check'>Check</Button></Link>
                 </CardFooter>
             </Card>
+            
+            <Card align="center" className='card'>
+                <CardHeader>
+                    <Heading className='solana-text'>Stay Updated</Heading>
+                </CardHeader>
+                <CardBody>
+                    <Text>Stay up-to-date with the latest news and updates happening on the space for the Solana Saga Phone</Text>
+                </CardBody>
+                <CardFooter>
+                    <Link to="/updates"><Button className='button-check'>Check</Button></Link>
+                </CardFooter>
+            </Card>
+            
             <Card align="center"  className='card'>
                 <CardHeader>
                     <Heading className='solana-text'>Official Links</Heading>

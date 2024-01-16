@@ -9,7 +9,7 @@
     .paragraph{
         font-size: 17px;
         line-height: 15px;
-        margin: 30px 15px 15px 15px !important;
+        margin: 40px 15px 15px 15px !important;
     }
     .main-title{
         font-size: 34px;
@@ -109,7 +109,7 @@
 
 .paragraph{
     font-size: 20px;
-    margin: 35px;
+    margin: 75px 5vw 35px 5vw;
     line-height: 50px;
 }
 

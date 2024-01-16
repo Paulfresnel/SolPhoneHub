@@ -117,7 +117,7 @@ function AirdropsCalculator(){
 
     return(
         <div>
-            <h1>SOLANA PHONE AIRDROP ESTIMATOOR TOOL</h1>
+            <h1>SOLANA SAGA AIRDROP ESTIMATOOR TOOL</h1>
             <p className="paragraph">Play around with this Cost & Profit estimatoor 🤑 to estimate your <strong>current PnL</strong> on your Solana Phone 🤪
             <br/>
             Don't forget there's still many more news incoming... 👀</p>
@@ -133,10 +133,10 @@ function AirdropsCalculator(){
                         Current Airdrop Estimatoor
                     </AbsoluteCenter>
             </Box>
-                <p className="bolder"><strong><em>Bonk</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
+                <p className="bolder"><strong><em>BONK</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
                 <p className="bolder"><strong><em>ACS</em></strong>: $ {(acsValue*100000*numOfPhones).toFixed(2)}</p>
-                <p className="bolder"><strong><em>Samo</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
-                <p className="bolder"><strong><em>Bozo</em></strong>: $ {(bozoValue*300000000*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>SAMO</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>BOZO</em></strong>: $ {(bozoValue*300000000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>LFG</em></strong>: $ {(lfgValue*1000000*numOfPhones).toFixed(2)}</p>
 
 
