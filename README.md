@@ -15,6 +15,9 @@ v0.2 - 10/01/24 - Added support for airdropped NFTs to be added in total value e
 v0.2.1 - 15/01/24 - Added support for additional NFT collections & backend built
 <img src="./public/nfts_readme.png"/>
 
+v0.2.2 - 16/01/24 Improved aesthethics and Identity of the App
+<img src="./public/update-v_3.png"/>
+
 
 <h2>Open-Source built with 💜 </h2>
 
