@@ -42,6 +42,7 @@ function SagaDaoAccnt (){
             setIsLoading(false);
         }, 1000)
 
+
     }, [])
 
     return(
@@ -49,14 +50,16 @@ function SagaDaoAccnt (){
         <p className="centered-text">Find information on the SagaDAO Treasury funds</p>
         <p className="centered-text">This wallet is mainly funded through the inflows of the royalties of the different NFT projects that allocated a % share to the sagaDAO Fam</p>
         
-        {!isLoading ? <div><Box position='relative' padding='10'>
+        {(!isLoading && solData?.image) ? <div><Box position='relative' padding='10'>
                 <Divider />
                     <AbsoluteCenter  fontWeight={"bold"} color={"rgba(145,6,196,1)"} bg='white' px='4'>
                         SagaDAO Treasury
                     </AbsoluteCenter>
             </Box>
-        {solData?.image && <div className="margin-t sagadao">SOL Balance: {solBalance.toFixed(2)} <Image className="margin-left" src={solData.image.thumb}/> </div>}
-        {solData?.image && <div className="margin-t sagadao">SOL Balance (in USD): $ {((solBalance*solData.market_data.current_price.usd).toFixed(2)).toLocaleString()}</div>}
+         <div className="margin-t sagadao">SOL Balance: {solBalance.toFixed(2)} <Image className="margin-left" src={solData.image.thumb}/> </div>
+         <div className="margin-t sagadao margin-b">SOL Balance (in USD): $ {Number(solBalance*solData.market_data.current_price.usd).toLocaleString()}</div>
+         <Divider/>
+         <div className="margin-t sagadao">SOL current Price: $ {solData.market_data.current_price.usd.toFixed(2)}</div>
 </div>: <div className="centered-loading"><strong>L.O.A.D.I.N.G...</strong><MutatingDots
   visible={true}
   height="100"
