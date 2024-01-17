@@ -1,6 +1,6 @@
-<h1>SolPhoneHub: For all your Solana Saga Needs</h1>
+<h1>Saga Drops Estimatoor Tools: For all your Solana Saga Needs</h1>
 
-<p>The web app can be accessed here: <a href="https://sol-phone-hub.vercel.app/airdrops">SolPhoneHub</a></p>
+<p>The web app can be accessed here: <a href="https://sol-phone-hub.vercel.app/airdrops">Saga Drops Estimatoor Tools</a></p>
 
 v0.1 - 04/01/24 - Initial launch version of the Hub - Accounts for $BONK & $ACS Airdrop
 <img src="./public//Screenshot 2023-12-30 at 17.01.56.png"/>
