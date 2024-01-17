@@ -8,6 +8,7 @@
     "build": "npm install"
   },
   "dependencies": {
+    "@solana/web3.js": "^1.89.1",
     "axios": "^1.6.5",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",

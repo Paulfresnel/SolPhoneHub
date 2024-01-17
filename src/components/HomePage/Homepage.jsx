@@ -39,13 +39,13 @@ function Homepage(){
             
             <Card align="center" className='card'>
                 <CardHeader>
-                    <Heading className='solana-text'>Stay Updated</Heading>
+                    <Heading className='solana-text'>SagaDAO Treasury Balance</Heading>
                 </CardHeader>
                 <CardBody>
-                    <Text>Stay up-to-date with the latest news and updates happening on the space for the Solana Saga Phone</Text>
+                    <Text>Consult the state and balance of the sagaDAO Treasury</Text>
                 </CardBody>
                 <CardFooter>
-                    <Link to="/updates"><Button className='button-check'>Check</Button></Link>
+                    <Link to="/saga-dao"><Button className='button-check'>Check</Button></Link>
                 </CardFooter>
             </Card>
             

@@ -82,7 +82,7 @@ function NftAirdropsCalculator(props){
                 )
             })}</div>
         
-         : <div className="centered"><MutatingDots
+         : <div className="centered-loading"><strong>L.O.A.D.I.N.G...</strong><MutatingDots
   visible={true}
   height="100"
   width="100"

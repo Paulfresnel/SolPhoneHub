@@ -11,14 +11,19 @@ function AirdropsCalculator(){
 
     // Defining State Variables
 
+    // Main Tokens Array
     const [tokensData, setTokensData] = useState([]);
     const [airdroppedNftsData, setAirdroppedNftsData] = useState([]);
+
+    // Tokens Individual State var
     const [bonkValue, setBonkValue] = useState();
     const [acsValue, setAcsValue] = useState();
     const [samoValue, setSamoValue] = useState();
     const [bozoValue, setBozoValue] = useState();
     const [solValue, setSolValue] = useState();
     const [lfgValue, setLfgValue] = useState();
+
+    //Config Params State var
     const [numOfPhones, setNumOfPhones] = useState(1);
     const [multiplePhonesDisplay, setMultiplePhonesDisplay] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +31,8 @@ function AirdropsCalculator(){
     const [totalNftsValue, setTotalNftsValue] = useState(0);
     const [nftStateVisibility, setNftStateVisibility] = useState(false);
     const [fetchCounter, setFetchCounter] = useState(0);
+
+    // Error message State var
     const [fetchErrMsg, setFetchErrMsg] = useState("");
 
     //Defining serverUrl from env variables

@@ -6,6 +6,7 @@ import Homepage from './components/HomePage/Homepage';
 import AirdropsCalculator from './components/AirdropsCalculator/AirdropsCalculator';
 import LatestUpdates from './components/LatestUpdates/LatestUpdates';
 import Footer from './components/Footer/Footer';
+import SagaDaoAccnt from './components/SagaDaoAccnt/SagaDaoAccnt';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Homepage/>}/>
       <Route path='/airdrops' element={<AirdropsCalculator/>}/>
       <Route path='/updates' element={<LatestUpdates/>}/>
+      <Route path="/saga-dao" element={<SagaDaoAccnt/>}/>
     </Routes>
     <Footer/>
     </div>

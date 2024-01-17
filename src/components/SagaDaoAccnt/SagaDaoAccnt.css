@@ -1,0 +1,21 @@
+
+.margin-t{
+    margin-top: 25px;
+}
+
+.sagadao{
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.margin-left{
+    margin-left: 15px;
+}
+
+.centered-text{
+    margin: 15px 30px 15px 30px;
+}
