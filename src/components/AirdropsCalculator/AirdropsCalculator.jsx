@@ -22,6 +22,7 @@ function AirdropsCalculator(){
     const [bozoValue, setBozoValue] = useState();
     const [solValue, setSolValue] = useState();
     const [lfgValue, setLfgValue] = useState();
+    const [chonkyValue, setChonkyValue] = useState(0);
 
     //Config Params State var
     const [numOfPhones, setNumOfPhones] = useState(1);
@@ -60,6 +61,7 @@ function AirdropsCalculator(){
         let samoResponse = await Axios.get(`${serverUrl}/api/tokens/samoyedcoin`);
         let bozoResponse = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
         let lfgResponse = await Axios.get(`${serverUrl}/api/tokens/lessfngas`);
+        let chonkyResponse = await Axios.get(`${serverUrl}/api/tokens/chonky`);
 
         let AccessProtocolData = accessProtocolResponse.data.tokenData;
         let BonkData = bonkResponse.data.tokenData;
@@ -67,14 +69,16 @@ function AirdropsCalculator(){
         let samoData = samoResponse.data.tokenData;
         let bozoData = bozoResponse.data.tokenData;
         let lfgData = lfgResponse.data.tokenData;
+        let chonkyData = chonkyResponse.data.tokenData;
 
-        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData, lfgData];
+        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData, lfgData, chonkyData];
         await setBonkValue(BonkData.market_data.current_price.usd);
         await setSolValue(solData.market_data.current_price.usd);
         await setAcsValue(AccessProtocolData.market_data.current_price.usd);
         await setSamoValue(samoData.market_data.current_price.usd);
         await setBozoValue(bozoData.market_data.current_price.usd);
         await setLfgValue(lfgData.market_data.current_price.usd);
+        await setChonkyValue(chonkyData.market_data.current_price.usd);
         await setTokensData(tokensDataArray);
         setFetchCounter(1);
         setTimeout(()=>{
@@ -144,6 +148,8 @@ function AirdropsCalculator(){
                 <p className="bolder"><strong><em>SAMO</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>BOZO</em></strong>: $ {(bozoValue*300000000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>LFG</em></strong>: $ {(lfgValue*1000000*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>CHONKY</em></strong>: $ {(chonkyValue*1000000*numOfPhones).toFixed(2)}</p>
+
 
 
                 {totalNftsValue > 0 && <p className="bolder"><strong><em>NFTs</em></strong>: $ {(totalNftsValue*solValue*numOfPhones).toFixed(2)}</p>}
@@ -164,16 +170,16 @@ function AirdropsCalculator(){
                 <Divider className="margin-top"/>    
                 <br/>          
                 <p>Total Value of Rewards: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)).toFixed(2)}</p>
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)).toFixed(2)}</p>
                 <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
                 {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+
-                (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones) - phoneCostValue) > 0 ? 
+                (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue) > 0 ? 
 
                 <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
                 : 
                 <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
                     </div>
 
             </div>} </div>: 
