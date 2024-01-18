@@ -143,6 +143,8 @@ function AirdropsCalculator(){
                         Current Airdrop Estimatoor
                     </AbsoluteCenter>
             </Box>
+                <div className="flexing"><i class="fa-solid fa-down-long"></i><p className="margined-b total-value">Total Value of Rewards: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)).toFixed(2)}</p><i class="fa-solid fa-down-long"></i></div>
                 <p className="bolder"><strong><em>BONK</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
                 <p className="bolder"><strong><em>ACS</em></strong>: $ {(acsValue*100000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>SAMO</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
@@ -169,8 +171,7 @@ function AirdropsCalculator(){
                 <label>How many ?<input type="number" className="reduced" onChange={(e)=>setNumOfPhones(e.target.value)} ></input></label>}
                 <Divider className="margin-top"/>    
                 <br/>          
-                <p>Total Value of Rewards: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)).toFixed(2)}</p>
+                
                 <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
                 {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+
                 (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue) > 0 ? 

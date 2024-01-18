@@ -88,8 +88,52 @@
     border: 1px rgb(134, 38, 218) solid;
 }
 
+.flexing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexing:hover{
+    i{
+    animation: tp-down 1s infinite linear;
+}
+}
+
+@keyframes tp-down {
+    0%{
+        margin-top:0px;
+    }
+    20%{
+        margin-top: 15px;
+    }
+    50%{
+        margin-top: 30px;
+    }
+    70%{
+        margin-top: 25px;
+    }
+    90%{
+        margin-top: 15px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}
+
 .highlighted:hover{
     color: blue;
+}
+
+.margined-b{
+    margin-bottom: 25px;
+    text-decoration: underline;
+}
+
+.total-value{
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
 
 }
 
