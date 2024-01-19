@@ -37,12 +37,16 @@ router.get("/tokens/:tokenSymbol", async (req, res) => {
 router.get('/sagadao', async (req,res) =>{
   console.log("fetching sagadao info...");
   const rpc = `https://solana-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`; // RPC URL for connecting with a Solana node
+
   const sagaDAOAddy = new solanaWeb3.PublicKey("6jYqTEtDgkr1v4DtU4QDUmg1cAf4o1GSsQDGt9X8EfPG");
+  const theSagaDaoAddy = new solanaWeb3.PublicKey('F8jKpEssvYmpoEZSVrsQNtDFCLp8jrpxojRzLzjDkd1h');
 
   const connection = new solanaWeb3.Connection(rpc, "confirmed"); // confirming the connection
 
   let accntBalanceResponse = await connection.getBalance(sagaDAOAddy); // getting the accnt balance
-  res.json({balance: accntBalanceResponse})
+  let sagaDaoBalanceResponse = await connection.getBalance(theSagaDaoAddy);
+
+  res.json({balance: accntBalanceResponse, sagaDaoBalance: sagaDaoBalanceResponse});
 })
 
 router.get('/sagadao/tx', async (req, res) => {

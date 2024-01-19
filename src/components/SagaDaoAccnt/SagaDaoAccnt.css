@@ -9,7 +9,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.bolded{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+.no-bottom-p{
+    padding-bottom: 15px !important;
+}
+
+.no-margin-t{
+    margin-top: 0;
+}
+
+.card-sagadao{
+    margin: 10px;
+    width: 400px;
+    border: 1px black solid;
+    box-shadow: 2px 2px 5px rgb(117, 43, 185);
+    padding: 10px;
+}
+
+.flexing-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap !important;
+    margin: 15px 5px;
+}
+
+.heading3{
+    font-size: 1.1rem;
 }
 
 .margin-left{
@@ -18,8 +51,22 @@
 
 .centered-text{
     margin: 15px 30px 15px 30px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.spaced-li{
+    margin: 10px;
+}
+
+.margin-t{
+    margin-top: 25px;
 }
 
 .margin-b{
     margin-bottom: 20px;
+}
+
+.underlined{
+    text-decoration: underline;
 }
