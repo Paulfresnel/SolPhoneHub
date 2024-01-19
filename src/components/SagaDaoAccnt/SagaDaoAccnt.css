@@ -3,6 +3,10 @@
     margin-top: 25px;
 }
 
+ul{
+    list-style-type: none;
+}
+
 .sagadao{
     font-size: 1.2rem;
     font-weight: bold;
@@ -14,6 +18,8 @@
 .bolded{
     font-size: 1.2rem;
     font-weight: bold;
+    text-decoration: underline;
+    color: rgba(50, 50, 246, 0.807);
 }
 
 
@@ -56,7 +62,7 @@
 }
 
 .spaced-li{
-    margin: 10px;
+    margin: 20px;
 }
 
 .margin-t{

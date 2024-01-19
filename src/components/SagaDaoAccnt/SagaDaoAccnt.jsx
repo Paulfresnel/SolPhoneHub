@@ -58,7 +58,7 @@ function SagaDaoAccnt (){
         <div>
         <p className="centered-text margin-t sagadao underlined">Find information on the SagaDAO Treasury funds</p>
         <br/>
-        <p className="centered-text">The DAO is mainly built around <strong className="bolded">2 wallets</strong>: </p>
+        <p className="centered-text">The DAO is mainly built around <strong fontWeight="bold">2 wallets</strong>: </p>
 
         <ul>
             <li className="spaced-li"> 🔍 <strong className="bolded"><a href="https://solana.fm/address/6jYqTEtDgkr1v4DtU4QDUmg1cAf4o1GSsQDGt9X8EfPG?cluster=mainnet-alpha">Royalties Wallet</a></strong>: Mainly funded through the inflows of the royalties of the different NFT projects that allocated a % share to the sagaDAO Fam,</li>
