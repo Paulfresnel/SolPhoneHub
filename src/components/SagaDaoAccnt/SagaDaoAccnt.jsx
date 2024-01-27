@@ -1,4 +1,4 @@
-import { Button, Image, AbsoluteCenter, Divider, Box } from "@chakra-ui/react";
+import { Button, Image, AbsoluteCenter, Divider, Box, Badge } from "@chakra-ui/react";
 import Axios from "axios"
 import { useEffect, useState } from "react";
 import "./SagaDaoAccnt.css"
@@ -80,7 +80,7 @@ function SagaDaoAccnt (){
                     <div className="margin-t sagadao margin-b">SOL Balance (in USD): $ {Number(solBalance*solData.market_data.current_price.usd).toLocaleString()}</div>
                 </div>
                 <div className="card-sagadao">
-                    <h3 className="heading3"><a className="link" target="_blank" rel="noreferrer" href="https://solana.fm/address/F8jKpEssvYmpoEZSVrsQNtDFCLp8jrpxojRzLzjDkd1h?cluster=mainnet-alpha">TheSagaDao.sol Wallet</a></h3>
+                    <h3 className="heading3"><a className="link" target="_blank" rel="noreferrer" href="https://solana.fm/address/F8jKpEssvYmpoEZSVrsQNtDFCLp8jrpxojRzLzjDkd1h?cluster=mainnet-alpha">TheSagaDao.sol Wallet </a> <Badge colorScheme="red">COMPROMISED</Badge></h3>
                     <div className="margin-t sagadao">SOL Balance: {sagaDaoBalance.toFixed(2)} <Image className="margin-left" src={solData.image.thumb}/> </div>
                     <div className="margin-t sagadao margin-b">SOL Balance (in USD): $ {Number(sagaDaoBalance*solData.market_data.current_price.usd).toLocaleString()}</div>
                 </div>

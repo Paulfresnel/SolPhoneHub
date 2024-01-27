@@ -20,7 +20,6 @@ function NftAirdropsCalculator(props){
         const fetchNfts = async ( ) =>{
             setIsLoading(true);
             const response = await Axios.get(`${serverUrl}/api/nft`);
-            console.log("raw backend data fetched:", response);
             const nftsArray = response.data.nft;
             let filteredArray = nftsArray.filter((x) => {
                 if (x.symbol === "sagapunks" || x.symbol === "sagamonkes" || x.symbol === "saga_dawgs" ||
@@ -35,7 +34,6 @@ function NftAirdropsCalculator(props){
             let completeNftsArr = filteredArray.map(async (nft)=>{
                 try{
                 let response = await Axios.get(`${serverUrl}/api/nft/${nft.symbol}`);
-                console.log("fetched successfully backend data for individual nft:", response.data.nftData)
                 nft.floorPrice = response.data.nftData.floorPrice;
                 return nft;
             } catch (err){

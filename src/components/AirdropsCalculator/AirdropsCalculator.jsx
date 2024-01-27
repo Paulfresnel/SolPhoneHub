@@ -23,6 +23,7 @@ function AirdropsCalculator(){
     const [solValue, setSolValue] = useState();
     const [lfgValue, setLfgValue] = useState();
     const [chonkyValue, setChonkyValue] = useState(0);
+    const [wenValue, setWenValue] = useState(0);
 
     //Config Params State var
     const [numOfPhones, setNumOfPhones] = useState(1);
@@ -62,6 +63,7 @@ function AirdropsCalculator(){
         let bozoResponse = await Axios.get(`${serverUrl}/api/tokens/bozo-collective`);
         let lfgResponse = await Axios.get(`${serverUrl}/api/tokens/lessfngas`);
         let chonkyResponse = await Axios.get(`${serverUrl}/api/tokens/chonky`);
+        let wenResponse = await Axios.get(`${serverUrl}/api/tokens/wen-4`)
 
         let AccessProtocolData = accessProtocolResponse.data.tokenData;
         let BonkData = bonkResponse.data.tokenData;
@@ -70,8 +72,9 @@ function AirdropsCalculator(){
         let bozoData = bozoResponse.data.tokenData;
         let lfgData = lfgResponse.data.tokenData;
         let chonkyData = chonkyResponse.data.tokenData;
+        let wenData = wenResponse.data.tokenData;
 
-        let tokensDataArray = [AccessProtocolData, BonkData, samoData, solData, bozoData, lfgData, chonkyData];
+        let tokensDataArray = [AccessProtocolData, BonkData, wenData, samoData, solData, bozoData, lfgData, chonkyData];
         await setBonkValue(BonkData.market_data.current_price.usd);
         await setSolValue(solData.market_data.current_price.usd);
         await setAcsValue(AccessProtocolData.market_data.current_price.usd);
@@ -79,6 +82,7 @@ function AirdropsCalculator(){
         await setBozoValue(bozoData.market_data.current_price.usd);
         await setLfgValue(lfgData.market_data.current_price.usd);
         await setChonkyValue(chonkyData.market_data.current_price.usd);
+        await setWenValue(wenData.market_data.current_price.usd);
         await setTokensData(tokensDataArray);
         setFetchCounter(1);
         setTimeout(()=>{
@@ -143,14 +147,22 @@ function AirdropsCalculator(){
                         Current Airdrop Estimatoor
                     </AbsoluteCenter>
             </Box>
-                <div className="flexing"><i class="fa-solid fa-down-long"></i><p className="margined-b total-value">Total Value of Rewards: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)).toFixed(2)}</p><i class="fa-solid fa-down-long"></i></div>
+                <div className="flexing"><i class="fa-solid fa-down-long"></i><p className="margined-b total-value">Total Value of Rewards: 
+
+                <br/>
+                <div className="total-value-ad">
+                $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)
+                +(wenValue*643652*numOfPhones)).toFixed(2)}</div></p><i class="fa-solid fa-down-long"></i></div>
+
                 <p className="bolder"><strong><em>BONK</em></strong>: $ {(bonkValue*30000000*numOfPhones).toFixed(2)} </p>
                 <p className="bolder"><strong><em>ACS</em></strong>: $ {(acsValue*100000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>SAMO</em></strong>: $ {(samoValue*1250*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>BOZO</em></strong>: $ {(bozoValue*300000000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>LFG</em></strong>: $ {(lfgValue*1000000*numOfPhones).toFixed(2)}</p>
                 <p className="bolder"><strong><em>CHONKY</em></strong>: $ {(chonkyValue*1000000*numOfPhones).toFixed(2)}</p>
+                <p className="bolder"><strong><em>WEN</em></strong>: $ {(wenValue*643652*numOfPhones).toFixed(2)}</p>
+
 
 
 
@@ -174,13 +186,16 @@ function AirdropsCalculator(){
                 
                 <label>Total cost of your Phone(s): $ <input value={phoneCostValue} onChange={(e)=>setPhoneCostValue(e.target.value)} type="number" className="reduced-2"></input></label>
                 {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+(totalNftsValue*solValue*numOfPhones)+
-                (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue) > 0 ? 
+                (bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)
+                +(wenValue*643652*numOfPhones) - phoneCostValue) > 0 ? 
 
                 <p className="green">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue).toFixed(2)}</p>
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)
+                +(wenValue*643652*numOfPhones) - phoneCostValue).toFixed(2)}</p>
                 : 
                 <p className="red">Profit: $ {((bonkValue*30000000*numOfPhones)+(acsValue*100000*numOfPhones)+(samoValue*1250*numOfPhones)+
-                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
+                (totalNftsValue*solValue*numOfPhones)+(bozoValue*300000000*numOfPhones)+(lfgValue*1000000*numOfPhones)+(chonkyValue*300000*numOfPhones)
+                +(wenValue*643652*numOfPhones) - phoneCostValue).toFixed(2)}</p> }
                     </div>
 
             </div>} </div>: 
@@ -218,16 +233,16 @@ function AirdropsCalculator(){
             </div>}
         </div>}
   
-  <Box position='relative' padding='10'>
+  {/* <Box position='relative' padding='10'>
   <Divider/>
               <AbsoluteCenter color={"rgba(145,6,196,1)"} fontWeight={"bold"} bg='white' px='4'>
-              Latest updates (15/01):
+              Latest updates (27/01):
               </AbsoluteCenter>
               </Box>
             <ul className="latest-updates">
                 <li>📱 <strong>Added Airdropped NFT collections and market data</strong> for some Saga mints </li>
                 <li>📱 Backend server built to handle API requests (API powered by <a className="link-social" href="https://docs.magiceden.io/reference/get_collections">MagicEden</a> & <a href="https://www.coingecko.com/" target="_blank">Coingecko</a>)</li>
-            </ul>
+            </ul> */}
         </div>
     )
 }

@@ -12,8 +12,11 @@ router.get("/", (req, res, next) => {
 
 router.get('/nft', async (req, res, next) => {
   console.log('Fetching NFTs...');
-  const response = await axios.get('https://api-mainnet.magiceden.dev/v2/collections?limit=500');
-  res.json({nft: response.data});
+  const responseFirst500 = await axios.get('https://api-mainnet.magiceden.dev/v2/collections?limit=500');
+  const responseLate500 = await axios.get('https://api-mainnet.magiceden.dev/v2/collections?offset=500&limit=500');
+  const nftListArr = responseFirst500.data.concat(responseLate500.data);
+  console.log("nft list assembled:", nftListArr);
+  res.json({nft: nftListArr});
 })
 
 router.get("/nft/:nftSymbol", async (req, res) => {
